@@ -8,7 +8,15 @@
             <ion-note>hi@ionicframework.com</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
-              <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
+              <ion-item
+                @click="selectedIndex = i"
+                router-direction="root"
+                :router-link="p.url"
+                lines="none"
+                :detail="false"
+                class="hydrated"
+                :class="{ selected: selectedIndex === i }"
+              >
                 <ion-icon aria-hidden="true" slot="start" :ios="p.iosIcon" :md="p.mdIcon"></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
@@ -43,9 +51,9 @@ import {
   IonMenuToggle,
   IonNote,
   IonRouterOutlet,
-  IonSplitPane,
-} from '@ionic/vue';
-import { ref } from 'vue';
+  IonSplitPane
+} from '@ionic/vue'
+import { ref } from 'vue'
 import {
   archiveOutline,
   archiveSharp,
@@ -60,10 +68,10 @@ import {
   trashOutline,
   trashSharp,
   warningOutline,
-  warningSharp,
-} from 'ionicons/icons';
+  warningSharp
+} from 'ionicons/icons'
 
-const selectedIndex = ref(0);
+const selectedIndex = ref(0)
 const appPages = [
   {
     title: 'Inbox',
@@ -101,13 +109,23 @@ const appPages = [
     iosIcon: warningOutline,
     mdIcon: warningSharp,
   },
-];
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+]
+const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
 
-const path = window.location.pathname.split('folder/')[1];
+const path = window.location.pathname.split('folder/')[1]
 if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
+  selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase())
 }
+
+import { useStorage } from '@/composables/useStorage'
+const { storage, getAllStorageValues } = useStorage()
+
+const getKeysStorage = async() => {
+  const values = await getAllStorageValues()
+  console.log(values)
+}
+
+getKeysStorage()
 </script>
 
 <style scoped>
