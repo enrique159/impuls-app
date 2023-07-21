@@ -11,8 +11,8 @@ export const AuthRoutes = [
       {
         path: '/auth/login',
         name: 'login',
-        component: LoginView
-      }
-    ]
-  }
+        component: LoginView,
+      },
+    ],
+  },
 ]

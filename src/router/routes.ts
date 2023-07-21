@@ -1,15 +1,13 @@
-import { RouteRecordRaw } from 'vue-router';
-// Modules 
+import { RouteRecordRaw } from 'vue-router'
+// Modules
 import { AuthRoutes } from '@/views/auth/routes'
+import { MainRoutes } from '@/views/main/routes'
 
 export const routes: Array<RouteRecordRaw> = [
   {
-    path: '',
-    redirect: '/folder/Inbox'
+    path: '/',
+    redirect: '/main',
   },
-  {
-    path: '/folder/:id',
-    component: () => import ('../views/FolderPage.vue')
-  },
-  ...AuthRoutes
+  ...AuthRoutes,
+  ...MainRoutes,
 ]

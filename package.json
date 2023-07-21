@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "ionic serve",
     "dev:ios": "ionic capacitor run ios -l --external",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
@@ -38,6 +38,7 @@
     "eslint": "^8.35.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^22.1.0",
+    "sass": "^1.64.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.2",
