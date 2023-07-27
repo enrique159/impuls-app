@@ -8,6 +8,7 @@ export const MainRoutes = [
     name: 'main',
     redirect: '/main/Inbox',
     component: MainModule,
+    meta: { requiresAuth: true },
     children: [
       {
         path: '/main/:id',

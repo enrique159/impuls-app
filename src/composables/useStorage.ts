@@ -1,4 +1,5 @@
 import { getCurrentInstance } from 'vue'
+import { useApp } from '@/composables/useApp'
 
 type valueStorage = {
   key: string,
@@ -9,6 +10,7 @@ export const useStorage = () => {
   // Get instance of current vue app
   const app = getCurrentInstance()
   if (!app) throw new Error('No vue app found')
+  const { setToken, setUser } = useApp()
 
   // Get storage instance from app
   const storage = app.appContext.config.globalProperties.$ionicStorage
@@ -45,6 +47,16 @@ export const useStorage = () => {
     await storage.clear()
   }
 
+  // SET STORAGE INTO STATE MANAGEMENT
+  const setupStorageInSession = async() => {
+    const storageValues = await getAllStorageValues()
+    console.log(storageValues)
+    storageValues.forEach((element: any) => {
+      if (element.key === 'token') setToken(element.value)
+      if (element.key === 'user') setUser(element.value)
+    })
+  }
+
   return {
     storage,
 
@@ -54,5 +66,6 @@ export const useStorage = () => {
     getStorageValue,
     removeStorageValue,
     clearStorage,
+    setupStorageInSession,
   }
 }

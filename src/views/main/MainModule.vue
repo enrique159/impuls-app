@@ -21,15 +21,6 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
-        <!-- <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
-
-          <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-            <ion-icon aria-hidden="true" slot="start" :ios="bookmarkOutline" :md="bookmarkSharp"></ion-icon>
-            <ion-label>{{ label }}</ion-label>
-          </ion-item>
-        </ion-list> -->
       </ion-content>
     </ion-menu>
 
@@ -41,7 +32,7 @@
 import { ref } from 'vue'
 import { useIonRouter } from '@ionic/vue'
 import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote, IonRouterOutlet, IonSplitPane } from '@ionic/vue'
-import { archiveOutline, archiveSharp, bookmarkOutline, bookmarkSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons'
+import { archiveOutline, archiveSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons'
 
 type appPage = {
   title: string
@@ -89,7 +80,6 @@ const appPages = [
     mdIcon: warningSharp,
   },
 ]
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
 
 const path = window.location.pathname.split('main/')[1]
 if (path !== undefined) {
@@ -100,7 +90,7 @@ const router = useIonRouter()
 
 const navigate = (app: appPage) => {
   selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === app.title.toLowerCase())
-  router.push(app.url, undefined)
+  router.push(app.url)
 }
 </script>
 

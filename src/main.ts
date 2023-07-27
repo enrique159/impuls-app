@@ -30,7 +30,7 @@ const pinia = createPinia()
 const storagePlugin = await storageFactory()
 
 const app = createApp(App)
-  .use(IonicVue)
+  .use(IonicVue, { mode: 'ios' })
   .use(router)
   .use(pinia)
   .use(storagePlugin)

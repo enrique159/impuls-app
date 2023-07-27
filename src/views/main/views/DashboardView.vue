@@ -30,7 +30,8 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 <style scoped>
 #dashboard {
   width: 100%;
-  height: 100vh;
-  background-color: aqua;
+  height: 100%;
+  display: grid;
+  place-items: center;
 }
 </style>

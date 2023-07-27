@@ -7,11 +7,20 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     vue(),
-    legacy()
+    legacy(),
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/styles/_custom.scss"; 
+        `,
+      },
+    },
+  },
 })
